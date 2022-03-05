@@ -1,0 +1,470 @@
+@import url(font.css);
+
+@mixin template-font-Lato {
+    font-family: 'Lato';
+    font-size: 20px;
+}
+
+@mixin template-border {
+    border: 1px solid $green;
+    border-radius: 4px;
+}
+
+@mixin link-hover{
+    &::after {
+        content: '';
+        display: block;
+        position: relative;
+        width: 0;
+        height: 2px;
+        background-color: $green;
+        left: 0;
+        bottom: -1px;
+        transition: 0.4s ease-in-out;
+    }
+    &:hover::after{
+        width: 100%;
+    }
+}
+
+@mixin template-font-Georgia {
+    font-family: "Georgia";
+    font-weight: bold;
+}
+
+
+@mixin button-animation{
+    &:hover{
+        color: $white;
+    }
+    &::after{
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        transform: scale(0, 0) rotate(-180deg);
+    }
+    &:hover::after{
+        transform: scale(1,1) rotate(0deg);
+    }
+}
+
+$fill-green: #245852;
+$green: #01996D;
+$white: #ffff;
+$black: #292929;
+
+
+
+html{
+    box-sizing: border-box;
+}
+
+
+.container {
+    max-width: 1369px;
+    margin: auto;
+}
+
+
+.header{
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+    }
+    &__logo{
+        padding-top: 30px;
+    }
+}
+
+
+.menu{
+    &__list{
+        &__items{
+            display: flex;
+            list-style-type: none;
+            padding-top: 33px;
+            margin-bottom: 31px;
+            justify-content: space-between;
+            padding-right: 200px;
+            width: 100%;
+        }
+        &__link{
+            @include link-hover;
+            text-decoration: none;
+            color: $black;
+        }
+    }
+    &__item{
+        @include template-font-Lato;
+        line-height: 24px;
+        font-weight: 400;
+        margin: 0 6px;
+    }
+}
+
+/* height: 51px;
+padding-top: 17px;
+margin-bottom: 17px;
+padding-right: 7px;
+padding-left: 50px; */
+
+/* height: 51px;
+display: flex;
+padding-top: 17px;
+justify-content: space-between; */
+
+.button__section{
+    display: flex;
+    padding-top: 17px;
+    justify-content: space-between;
+}
+
+.menu{
+    &__link{
+        @include link-hover;
+        @include template-font-Lato;
+        line-height: 24px;
+        padding-right: 35px;
+        font-weight: 400;
+        text-decoration: none;
+        color: $black;
+        padding-top: 16px;
+    }
+    &__btn{
+        @include button-animation;
+        @include template-font-Lato;
+        @include template-border;
+        background-color: $green;
+        box-sizing: border-box;
+        color: $white;
+        text-align: center;
+        height: 51px;
+        width: 183px;
+        padding: 13px 30px;
+        line-height: 25px;
+    }
+}
+
+//FIXME: Картинка чет едет как-то непонятно
+/* width: 1880px;
+height: 896px;
+left: 18px; */
+.headline__backgroung{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+.headline__menu{
+    position: absolute;
+    top: 260px;
+    height: 384px;
+    left: 250px;
+    &__title{
+        font-family: "Gerogia";
+        font-weight: bold;
+        line-height: 74px;
+        font-size: 65px;
+        color: $green;
+        width: 440px;
+        height: 148px;
+        margin-bottom: 30px;
+    }
+    &__text{
+        @include template-font-Lato;
+        width: 420px;
+        height: 123px;
+        line-height: 31px;
+    }
+    &__btn{
+        @include template-font-Lato;
+        @include template-border;
+        line-height: 25px;
+        text-align: center;
+        color: $white;
+        background-color: $green;
+        padding: 20px 50px;
+    }
+
+}
+
+//FIXME: схлопываются две секции Еще нужна картинка чуть ниже
+.content__top{
+    padding-top: 130px;
+    display: flex;
+    justify-content: space-between;
+    &__title{
+        &-heading{
+            font-family: "Lato";
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 38px;
+            color: $black;
+            width: 141px;
+            height: 38px;
+        }
+        &-review{
+            font-family: "Gerogia";
+            font-weight: bold;
+            font-size: 50px;
+            line-height: 79px;
+            width: 584px;
+            height: 158px;
+            color: $green;
+
+        }
+    }
+    &__description{
+        @include template-font-Lato;
+        font-weight: 500;
+        line-height: 30px;
+        color: $black;
+        width: 671px;
+        padding-top: 70px;
+    }
+
+}
+
+
+.content__bottom{
+    display: flex;
+    justify-content: space-between;
+    &__item{
+        width: 390px;
+        height: 937px;
+        left: 275px;
+        font-family: "Georgia";
+        &-header{
+            font-size: 150px;
+            list-style: 225px;
+            text-align: left;
+            color: rgba(1, 153, 109, 0.2);
+            margin-bottom: -57px;
+        }
+        &-name{
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 45px;
+            text-align: center;
+            color: $black;
+            margin-bottom: 70px;
+        }
+        &-description{
+            @include template-font-Lato;
+            font-weight: 500;
+            line-height: 30px;
+            color: #424242;
+            margin-bottom: 66px;
+        }
+        &:nth-child(1){
+            padding-top: 96px;
+        }
+        &:nth-child(2){
+            padding-top: 410px;
+        }
+        &:last-child{
+            padding-top: 137px;
+        }
+        &-img-small{
+            position: relative;
+            top: -270px;
+            left: 205px;
+        }
+    }
+}
+
+.content__bottom__item:nth-child(2) .content__bottom__item-header span{
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #000000;
+    -webkit-text-fill-color: #ccebe2;
+    text-shadow: 3px 5px 0px #A3A3A3;
+}
+
+
+.about{
+    background-color: $fill-green;
+    display: flex;
+    &__box{
+        padding-top: 200px;
+        padding-left: 207px;
+        flex-direction: column;
+        margin-bottom: 200px;
+        &__header{
+            @include template-font-Georgia;
+            font-size: 40px;
+            line-height: 78.5px;
+            color: $white;
+            white-space: pre-line;
+        }
+        &__text{
+            padding-top: 35px;
+            margin-bottom: 60px;
+            font-family: "Lato";
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 39px;
+            color: $white;
+        }
+        &__btn{
+            @include template-font-Lato;
+            @include template-border;
+            width: 240px;
+            height: 65px;
+            background-color: $green;
+            color: $white;
+        }
+    }
+    &__video{
+        padding: 210px 200px;
+        &-wrapper{
+            width: 890px;
+            height: 516px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+    }
+}
+
+
+.product{
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__text{
+        width: 584px;
+        height: 413px;
+
+    }
+    &__img__top{
+        padding-top: 120px;
+        padding-left: 100px;
+    }
+    &__img__bottom{
+        background-color: $white;
+        width: 293.9px;
+        height: 296.14px;
+        margin-top: -220px;
+        left: 300px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: -5px 5px 8px 0px rgba(34, 60, 80, 0.2);
+        transition: transform 0.6s;
+        cursor: pointer;
+        &-header{
+            font-family: "Lato";
+            font-size: 14px;
+            border-bottom: 1px solid black;
+            padding-bottom: 8px;
+            padding-top: 22px;
+        }
+        &-icon{
+            padding-top: 13px;
+            margin-bottom: 10px;
+        }
+        &-name{
+            font-family: "Lato";
+            font-size: 12px;
+            margin-bottom: 45px;
+        }
+        &-title{
+            @include template-font-Georgia;
+            font-size: 16px;
+            color: #000000;
+            margin-bottom: 14px;
+        }
+        &-item{
+            list-style-position: inside;
+            font-family: "Lato";
+            font-size: 11px;
+            color: #000000;
+            margin-bottom: 14px;
+        }
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+}
+//#FIXME: Перенести текст
+.product__text{
+    padding-top: 120px;
+    width: 584px;
+    height: 413px;
+    margin-bottom: 400px;
+    &__our{
+        font-family: "Lato";
+        font-weight: 600;
+        font-size: 25px;
+        color: #424242;
+        margin-bottom: 10px;
+    }
+    &__header{
+        font-family: "Georgia";
+        font-weight: 600;
+        font-size: 50px;
+        line-height: 79px;
+        color: $green;
+        margin-bottom: 20px;
+    }
+    &__desc{
+        font-family: "Lato";
+        font-size: 20px;
+        line-height: 31px;
+        color: #484848;
+        margin-bottom: 40px;
+    }
+    &__btn{
+        @include template-font-Lato;
+        @include template-border;
+        width: 227px;
+        height: 65px;
+        background-color: $green;
+        color: $white;
+    }
+}
+
+
+.footer{
+    height: 654px;
+    background-color: $fill-green;
+    &__list{
+        &__items{
+            padding-top: 95px;
+            &-item{
+                &:first-child{
+                    font-weight: 900;
+                    font-size: 40px;
+                    line-height: 55px;
+                }
+                font-weight: 600;
+                font-size: 25px;
+                line-height: 30px;
+                margin-bottom: 60px;
+            }
+            &__link{
+                text-decoration: none;
+                color: $white;
+            }
+
+        }
+
+    }
+}
+
+
+
+
+@media screen and (max-width: 1670px) {
+    .about__video{
+        &-wrapper{
+            width: 90%;
+            height: 90%;
+        }
+    }   
+}
